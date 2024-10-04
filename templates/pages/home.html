@@ -1,0 +1,201 @@
+{% include "components/navbar.html" %}
+
+
+
+    <!-- Home -->
+     <div class=" text-center main-title">
+    <h2>Bhaktapurians <br/>Keepers of Culture, Tradition, and Heritage</h2>
+</div>
+
+    <div class="container-fluid home-top-img">
+    
+        <img src="/static/home_image/child.jpg" alt="Bhaktapur Image" class="background-image">
+        <p>Bhaktapur</p>
+        <h3>DISCOVER BY INTEREST</h3>
+    </div>
+    
+    
+        <!-- -----------------
+         -------Images Show cae--------
+         ------------------------- -->
+        <div class="container section1 text-center">
+
+        <div class="row">
+            <div class="col-lg-6 col-md-12 home-cards large-card">
+                <div class="card-overlay">
+                    <img src="https://media.istockphoto.com/id/472139645/photo/nepali-potter-working-on-the-pottery-square-in-bhaktapur.jpg?b=1&s=612x612&w=0&k=20&c=wxdOp5lZUdduOc-K-lhu0k2SYweGhq2v_LEDJtc-SMU=" alt="Culture Image">
+                    <div class="card-caption">
+                        <p>CULTURE</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 home-cards">
+                <div class="card-overlay">
+                    <img src="https://images.unsplash.com/photo-1630854850880-4b049aa9b387?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJoYWt0YXB1cnxlbnwwfDB8MHx8fDA%3D" alt="Feasts and Festivals">
+                    <div class="card-caption">
+                        <p>FEASTS AND FESTIVALS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 home-cards">
+                <div class="card-overlay">
+                    <img src="https://images.pexels.com/photos/8816847/pexels-photo-8816847.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hiking Trails">
+                    <div class="card-caption">
+                        <p>HERITAGE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Second row with smaller images -->
+        <div class="row mt-4">
+            <div class="col-lg-3 col-md-6 col-sm-12 home-cards">
+                <div class="card-overlay">
+                    <img src="https://media.istockphoto.com/id/172882207/photo/say-a-little-prayer.jpg?b=1&s=612x612&w=0&k=20&c=7a6PH9EzyCp7vcvOIQNCQG4ZaU8zeVCN4hS2LXS1QTM=" alt="Foods Image">
+                    <div class="card-caption">
+                        <p>RITUALS</p>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-lg-6 col-md-12 home-cards">
+                <div class="card-overlay">
+                    <img src="/static/home_image/kumari.jpg" alt="Heritage of Bhaktapur">
+                    <div class="card-caption">
+                        <p>TRADITION OF BHAKTAPUR</p>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+
+    <!-- ------------------------------
+     -----------------Top  Posts----------
+     ---------------------------- -->
+     {% if top_news %}
+     <div class="container top-news-section">
+         <hr>
+         <h2 class="section-title text-center">Top Posts</h2>
+         
+         <div class="row">
+             {% for item in top_news %}
+             <div class="col-md-6 news-card">
+                 <div class="card horizontal-card">
+                     <div class="row no-gutters"> <!-- Use no-gutters to eliminate margin between columns -->
+                         <div class="col-md-4">
+                           <img src="{{ item.image.url }}" class="card-img-left" alt="News Image 1">
+
+                         </div>
+                         <div class="col-md-8">
+                             <div class="card-body">
+                                 <h5 class="card-title"> <a href="/details/{{item.id}}">{{ item.title }}</h5></a>
+                                 <p class="card-date">{{ item.date_created }}</p>
+                                 <p class="card-text">{{ item.body|truncatewords:20|safe }}</p>
+                                 <a href="/details/{{item.id}}" class="btn-read-more">Read More <span>&#x2192;</span></a>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             {% endfor %}
+         </div>
+     </div>
+     {% endif %}
+     
+    
+    <!-- ----
+     -------Culture and Tradition------
+     ------------------ -->
+{% if culture_data %}
+     <section class="culture-tradition-section">
+        <div class="container">
+            <h2 class="section-title">Culture and Tradition of Bhaktapur</h2>
+            <div class="row">
+                {% for item in culture_data%}
+                <div class="col-md-4  my-3 col-sm-12 d-flex justify-content-center culture-card">
+                    <div class="card">
+                        <img src="{{ item.image.url }}" class="card-img-top" alt="Bhaktapur Festival">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="/details/{{item.id}}">{{item.title}}</a></h5>
+                            <p class="card-text">{{item.body|truncatewords:20|safe}}</p>
+                            <p> Date: {{item.date_created}}</p>
+                        </div>
+                    </div>
+                </div>
+                 {% endfor %}
+               
+    </section>
+    {% endif %}
+    
+
+    <!-- -------------
+     -----------Notice from wards---------
+     --------------------------- -->
+     {% if ward_data %}
+     <div class="container top-news-section">
+         <hr>
+         <h2 class="section-title text-center">Ward Notice</h2>
+         
+         <div class="row">
+             {% for item in ward_data %}
+             <div class="col-md-6 news-card">
+                 <div class="card horizontal-card">
+                     <div class="row no-gutters"> <!-- Use no-gutters to eliminate margin between columns -->
+                         <div class="col-md-4">
+                           <img src="{{ item.image.url }}" class="card-img-left" alt="News Image 1">
+
+                         </div>
+                         <div class="col-md-8">
+                             <div class="card-body">
+                                 <h5 class="card-title"> <a href="/details/{{item.slug}}">{{ item.title }}</h5></a>
+                                 <p class="card-date">{{ item.date_created }}</p>
+                                 <p class="card-text">{{ item.body|truncatewords:20|safe }}</p>
+                                 <a href="/details/{{item.slug}}" class="btn-read-more">Read More <span>&#x2192;</span></a>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             {% endfor %}
+         </div>
+     </div>
+     {% endif %}
+     
+
+    
+<!-- ---------------------
+ ----------------Jobs----------- 
+ ------------------------------>
+
+ {% if jobs_data %}
+ <section class="culture-tradition-section">
+    <div class="container">
+        <h2 class="section-title">Job</h2>
+        <div class="row">
+            {% for item in jobs_data%}
+            <div class="col-md-4  my-3 col-sm-12 d-flex justify-content-center culture-card">
+                <div class="card">
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="Bhaktapur Festival">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/details/{{item.id}}">{{item.title}}</a></h5>
+                        <p class="card-text">{{item.body|truncatewords:20|safe}}</p>
+                        <p> Date: {{item.date_created}}</p>
+                    </div>
+                </div>
+            </div>
+             {% endfor %}
+           
+</section>
+{% endif %}
+ 
+    
+        <!-- -------Footer------- -->
+
+{% include "components/footer.html"%}
+    
+</body>
+</html>

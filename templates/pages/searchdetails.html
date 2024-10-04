@@ -1,0 +1,47 @@
+{% include "components/navbar.html" %}
+
+
+
+
+
+
+{% if data %}
+<div class="container category-section">
+    <b style="color: gray;"> Your Search : {{query }}</b>
+    
+    <hr>
+
+
+    <div class="row">
+        {% for item in data %}
+        <div class="col-md-6 my-2 news-card">
+            <div class="card horizontal-card">
+                <div class="row no-gutters"> <!-- Use no-gutters to eliminate margin between columns -->
+                    <div class="col-md-4">
+                        <img src="{{item.image.url}}" class="card-img-left" alt="Job Image">
+                    </div>
+                    <div class="col-md-8 ">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="/details/{{item.id}}">{{ item.title }}</a></h5>
+                            <p class="card-date">{{ item.date_created }}</p>
+                            <p class="card-text">{{ item.body | truncatewords:20|safe }}</p> <!-- Truncated text to fit within card space -->
+                            <p style="color: gray;" > category:{{item.category}}</p>
+                            <a href="/details/{{item.id}}" class="btn-read-more">Read More <span>&#x2192;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<div class="container" style="height: 50vh;"> 
+<h2 >Data not found  "{{query}}"</h2>
+</div>
+{% endif %}
+
+
+
+
+{% include "components/footer.html" %}

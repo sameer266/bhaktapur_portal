@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CKEditor Browse</title>
+   
+    <script src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+    <style>
+        /* Basic styles for the image gallery */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .image-item {
+            border: 1px solid #ccc;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .image-item img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+    <script>
+        function selectImage(imageUrl) {
+            // Pass the selected image URL back to CKEditor
+            var funcNum = getUrlParameter('CKEditorFuncNum');
+            window.opener.CKEDITOR.tools.callFunction(funcNum, imageUrl);
+            window.close();  // Close the browse window
+        }
+
+        function getUrlParameter(name) {
+            // Utility function to get URL parameters
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            return results === null ? null : decodeURIComponent(results[1]) || 0;
+        }
+    </script>
+</head>
+<body>
+    <h1>CKEditor Browse</h1>
+    <p>Select an image to insert it into the CKEditor.</p>
+
+    <div class="image-gallery">
+        {% for image in images %}  <!-- Assuming you pass an 'images' context variable -->
+            <div class="image-item" onclick="selectImage('{{ image.url }}')">
+                <img src="{{ image.url }}" alt="{{ image.name }}">
+                <p>{{ image.name }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if not images %}
+        <p>No images available. Please upload some images.</p>
+    {% endif %}
+</body>
+</html>

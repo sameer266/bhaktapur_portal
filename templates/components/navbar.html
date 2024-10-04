@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- ----Tiny mce  -->
+     <script src="/static/js/tinymce.js"></script>
+    <!-- Css -->
+     <link rel="stylesheet" href="/static/nav&footer.css" />
+     <link rel="stylesheet" href="/static/pages_style/home.css" />
+     <link rel="stylesheet" href="/static/pages_style/all_category.css"/>
+     <link rel="stylesheet" href="/static/pages_style/details.css"/>
+     <link rel="stylesheet" href="/static/pages_style/wardlogin.css"/>
+     <link rel="stylesheet" href="/static/pages_style/edit.css"/>
+
+    <title>My Bhaktapur</title>
+    
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+          <img src="https://st3.depositphotos.com/9625000/12647/v/950/depositphotos_126475070-stock-illustration-bhaktapur-nyatapola-temple-silhouette-vector.jpg" style="width: 50px; border-radius: 10%; margin-right: 4px;"/>
+          <a class="navbar-brand nav-title"  href="/">Bhaktapurians</a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active {% if request.path == '/jobs/' %}active_bgcolor{% endif %}" href="/jobs/">Jobs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active {% if request.path == '/culture-tradition/' %}active_bgcolor{% endif %}" href="/culture-tradition/">Culture & Festival</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active {% if request.path == '/history/' %}active_bgcolor{% endif %}" href="/history/">History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active {% if request.path == '/events-notice/' %}active_bgcolor{% endif %}" href="/events-notice">Events & Notice</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active {% if request.path == '/explore-places/' %}active_bgcolor{% endif %}" href="/explore-places/">Explore Places</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active {% if request.path == '/user/' %}active_bgcolor{% endif %}" href="/user/">Login</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Wards  &#11206;
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                  <li><a class="dropdown-item" href="/ward/1/">Ward 1</a></li>
+                  <li><a class="dropdown-item" href="/ward/2/">Ward 2</a></li>
+                  <li><a class="dropdown-item" href="/ward/3/">Ward 3</a></li>
+                  <li><a class="dropdown-item" href="/ward/4/">Ward 4</a></li>
+                  <li><a class="dropdown-item" href="/ward/5/">Ward 5</a></li>
+                </ul>
+              </li>
+             
+            </ul>
+            <form class="d-flex" method="get" action="/search-details/">
+              <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+
+    
+</body>
+</html>

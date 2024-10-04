@@ -1,0 +1,29 @@
+{% include "components/navbar.html" %}
+
+<div class="container edit-para">
+    <h2>Edit</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Title -->
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" value="{{ ward_data.title }}" />
+        </div>
+
+        <!-- Body -->
+        <div class="form-group">
+            <label for="body">Body</label>
+            <textarea id="body" name="body">{{ ward_data.body }}</textarea>
+        </div>
+
+        <!-- Image -->
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" id="image" name="image" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>

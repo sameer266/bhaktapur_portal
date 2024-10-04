@@ -1,0 +1,102 @@
+/* Container for the details section */
+.container.details {
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+}
+
+/* Item list styling */
+.details .item-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.details .item {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Title for the item */
+.details .item h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Description styling */
+.details .item p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+.details .date{
+    color: gray;
+}
+
+/* 'Read More' button/link */
+.details .read-more {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #3498db;
+    font-weight: 600;
+    padding: 8px 14px;
+    background-color: #f0f8ff;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for 'Read More' */
+.details .read-more:hover {
+    color: white;
+    background-color: #3498db;
+    border: 1px solid #2980b9;
+}
+
+/* Back button styling */
+.details .back-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    background-color: #3498db;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for Back button */
+.details .back-button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+    .container.details {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .details .item h3 {
+        font-size: 22px;
+    }
+
+    .details .item p {
+        font-size: 15px;
+    }
+
+    .details .read-more, .details .back-button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}

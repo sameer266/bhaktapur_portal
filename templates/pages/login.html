@@ -1,0 +1,25 @@
+{% include 'components/navbar.html'%}
+
+
+{% if error %}
+
+<h3 class="text-center">Invalid Credentials</h3>
+{% endif %}
+
+<div class="container ward-login">
+  
+
+<div class="login-form">
+<form method="post">
+    {% csrf_token %}
+    <label for="username">Username</label>
+    <input type="text" name="username" />
+    <label for="password">Password</label>
+    <input type="password" name="password" />
+    <button type="submit">Login</button>
+    </form>
+
+ </div>
+
+</div>
+{% include 'components/footer.html'%}

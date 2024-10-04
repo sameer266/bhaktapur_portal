@@ -1,0 +1,16 @@
+{% include "components/navbar.html" %}
+
+<div class="container details">
+    <h1>{{ data.title }}</h1>
+    <img src="{{ data.image.url }}" class="card-img-top" />
+    <p class="para">{{ data.body|safe }}</p>
+    <p class="date">{{ data.date_created }}</p> <!-- Add more fields as necessary -->
+    
+    {% if data.category.name == "Jobs" %}
+        <a href="/" class="back-button">Apply now</a>
+    {% else %}
+        <a href="/" class="back-button">Back to List</a>
+    {% endif %}
+</div>
+
+{% include "components/footer.html" %}

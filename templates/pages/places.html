@@ -1,0 +1,34 @@
+
+{% include "components/navbar.html" %}
+
+
+{% if places_data %}
+<div class="container category-section">
+    <hr>
+    <h2 class="section-title text-center">Explore Places</h2>
+
+    <div class="row">
+        {% for item in places_data %}
+        <div class="col-md-6 my-2 news-card">
+            <div class="card horizontal-card">
+                <div class="row no-gutters"> <!-- Use no-gutters to eliminate margin between columns -->
+                    <div class="col-md-4">
+                        <img src="{{item.image.url}}" class="card-img-left" alt="Job Image">
+                    </div>
+                    <div class="col-md-8 ">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="/details/{{item.id}}">{{ item.title }}</a></h5>
+                            <p class="card-date">{{ item.date_created }}</p>
+                            <p class="card-text">{{ item.body | truncatewords:20|safe }}</p> <!-- Truncated text to fit within card space -->
+                            <a href="/details/{{item.id}}" class="btn-read-more">Read More <span>&#x2192;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% include "components/footer.html"%}
