@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-hd$vi4*g_w_-(r*vr_h#b7lm!v7*s9=npvvsvo4*9--z=ri-ln
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -132,7 +132,7 @@ USE_TZ = True
 import os
 # URL prefix for serving static files
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles" / "static"
+STATIC_ROOT = BASE_DIR / "staticfiles" 
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Media files settings
@@ -167,3 +167,5 @@ CKEDITOR_CONFIGS = {
             ]),
         },
 }
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
