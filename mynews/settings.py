@@ -130,14 +130,17 @@ USE_TZ = True
 
 # Static files
 import os
-# URL prefix for serving static files
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles" 
-STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# Static files settings
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Ensure this is a list
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 # Media files settings
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Ensure compatibility with os.path
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -167,3 +170,5 @@ CKEDITOR_CONFIGS = {
             ]),
         },
 }
+
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

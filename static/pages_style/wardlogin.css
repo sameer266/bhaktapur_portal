@@ -47,7 +47,7 @@
 }
 
 /* Error message styling */
-h3 {
+.ward-login h3 {
     color: red;
     text-align: center;
     margin-bottom: 15px;
