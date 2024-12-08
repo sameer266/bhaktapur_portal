@@ -4,14 +4,16 @@
 
     <!-- Home -->
      <div class=" text-center main-title">
-    <h2>Bhaktapurians <br/>Keepers of Culture, Tradition, and Heritage</h2>
+        <h2>Bhaktapurians </h2>
+
 </div>
 
     <div class="container-fluid home-top-img">
     
-        <img src="/static/home_image/child.jpg" alt="Bhaktapur Image" class="background-image">
-        <p>Bhaktapur</p>
-        <h3>DISCOVER BY INTEREST</h3>
+       <a href="/"> <img src="/static/home_image/child.jpg" alt="Bhaktapur Image" class="background-image"></a>
+        <p>EXPLORE THE </p>
+<h3>HEART OF HERITAGE</h3>
+
     </div>
     
     
@@ -74,12 +76,12 @@
 
 
     <!-- ------------------------------
-     -----------------Top  Posts----------
+     -----------------Latest Posts----------
      ---------------------------- -->
      {% if top_news %}
      <div class="container top-news-section">
          <hr>
-         <h2 class="section-title text-center">Top Posts</h2>
+         <h2 class="section-title text-center">Latest Posts</h2>
          
          <div class="row">
              {% for item in top_news %}
@@ -105,6 +107,17 @@
          </div>
      </div>
      {% endif %}
+
+
+<!-- ----------------
+ -------------Background full width image
+ ------------------ -->
+<section class="hero-section2">
+    <div class="quote-container">
+        <h1> The City of Gods</h1>
+        <p>"Discover the divine beauty of Bhaktapur, where every corner holds a story of spirituality and art."</p>
+    </div>
+</section>
      
     
     <!-- ----
@@ -130,6 +143,19 @@
                
     </section>
     {% endif %}
+
+
+
+    <!-- ---------------
+     -----------Image bg--
+    Full-Width Background Section -->
+
+     <section class="hero-section">
+        <div class="quote-container">
+            <h1> A City of Culture, Heritage, and Beauty</h1>
+            <p>"Bhaktapur is a living museum that tells the story of Nepal’s rich history, culture, and traditions."</p>
+        </div>
+    </section>
     
 
     <!-- -------------
@@ -191,7 +217,35 @@
            
 </section>
 {% endif %}
- 
+
+
+ <!-- ---------------
+  --------Collection image-------
+  ------------------- -->
+
+  <section class="home-images">
+    <div class="image-gallery">
+        <div class="image-item">
+            <img src="/static/images/god.jpg" alt="God">
+            <div class="caption">God Durga</div>
+        </div>
+        <div class="image-item">
+            <img src="/static/images/sidhha.jpg" alt="Gallery">
+            <div class="caption">Rani Pokhari</div>
+        </div>
+        <div class="image-item">
+            <img src="/static/images/namaste.jpg" alt="Namaste">
+            <div class="caption">Namaste</div>
+        </div>
+        <div class="image-item">
+            <img src="/static/images/datatray.jpg" alt="Data Tray">
+            <div class="caption">Dattatreya </div>
+        </div>
+    </div>
+</section>
+
+
+
     
         <!-- -------Footer------- -->
 

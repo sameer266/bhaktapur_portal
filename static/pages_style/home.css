@@ -1,20 +1,24 @@
-/* --------------
--------Mian -title quotes---
----------------------- */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
 
+/* Apply Google Fonts */
+body {
+    font-family: 'Roboto', sans-serif; /* Main font */
+    color: #333;
+}
 
-
+/* --------Main Title (h2)-------- */
 .main-title h2 {
     margin-top: 10px;
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    font-family: 'Playfair Display', serif; /* Elegant serif font for titles */
     color: #131313;
     text-shadow:
-        1px -1px 0 #767676,
-        -1px 2px 1px #737272,
-        -2px 4px 1px #767474;
+    1px -1px 0 #767676, 
+    -1px 2px 1px #737272, 
+    -2px 4px 1px #767474;
+       
     text-transform: uppercase;
     text-rendering: optimizeLegibility;
-
 }
 
 
@@ -216,6 +220,77 @@
 }
 
 
+/*---------------
+---------Full width bg-image Hero Section 2---------
+------------------------------------ */
+.hero-section2 {
+    background-image: url('/static/images/bg-temple.jpg'); /* Background image for second section */
+    background-size: contain; /* Ensures the entire image is visible */
+    background-position: center;
+    background-repeat: no-repeat; /* Prevents repetition of the image */
+  
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    margin: 10px 40px;
+    border-radius: 10px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+
+.hero-section2 .quote-container h1 {
+    font-size: 3em; /* Larger text for this section */
+    margin-bottom: 20px;
+}
+
+/* -------------------
+-----Full-Width Background Section-
+------------------- */
+
+.hero-section {
+    background-image: url('/static/images/bg1.jpg'); /* Update the image URL to your background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* This makes the background image "stick" when scrolling */
+    height: 90vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    margin: 10px 5px 10px 15px;
+    border-radius: 10px;
+}
+
+
+/* Styling for the quote container */
+.quote-container {
+    background: rgba(0, 0, 0, 0.521); /* Semi-transparent background for better text visibility */
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.quote-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-family: 'Merriweather', serif; /* Optional: You can use a Google Font for the title */
+}
+
+.quote-container p {
+    font-size: 1.25rem;
+   
+}
+
+
+
 /* ---------------
 ---- Culture & Tradition Section ----
 ---------------------- */
@@ -335,3 +410,57 @@ h2.ward-section{
 
 
 /* --------Jobs=------- as culture and tradition css */
+
+
+
+/* -----------Collection image css---------- */
+.home-images {
+    padding: 40px 20px;
+    background: #f9f9f9;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.image-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image-item:hover img {
+    transform: scale(1.05);
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.image-item:hover .caption {
+    opacity: 1; /* Show caption on hover */
+}

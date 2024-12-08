@@ -31,9 +31,12 @@
     <div class="row">
        
         {% for item in ward_data %}
+        <p class="ward-title" style="color: black ; text-align: center;font-weight: bold; " > Welcome Ward no {{item.name}}</p>
         <div class="col-md-6 my-2 news-card">
+           
             <div class="card horizontal-card">
                 <div class="row no-gutters">
+                    
                    
                     <div class="col-md-4">
                         <img src="{{ item.image.url }}" class="card-img-left" alt="{{ item.title }}">

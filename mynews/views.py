@@ -11,7 +11,7 @@ from ward.models import Ward
 # -----home-------
 def Home(request):
     category_culture=Category.objects.get(name="Culture & Tradition")
-    culture=Content.objects.filter(category=category_culture).order_by('-date_created')[:4]
+    culture=Content.objects.filter(category=category_culture).order_by('-date_created')[:6]
     
     category_jobs=Category.objects.get(name="Jobs")
     jobs=Content.objects.filter(category=category_jobs).order_by('-date_created')[:4]

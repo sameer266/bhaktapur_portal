@@ -2,82 +2,92 @@
 .container.details {
     max-width: 1000px;
     margin: 40px auto;
-    background-color: #fff;
-    padding: 25px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 30px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
     margin-top: 10vh;
     margin-bottom: 20vh;
+  
+    
 }
 
 /* Item list styling */
 .details .item-list {
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
 .details .item {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
 }
 
 /* Title for the item */
 .details .item h3 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 15px;
+    font-size: 1.8rem;
+    color: #222;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 /* Description styling */
 .details .item p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 15px;
 }
-.details .date{
-    color: gray;
+
+.details .date {
+    font-size: 0.9rem;
+    color: #999;
+    font-style: italic;
+    margin-top: 5px;
 }
 
 /* 'Read More' button/link */
 .details .read-more {
     display: inline-block;
-    margin-top: 15px;
-    text-decoration: none;
-    font-size: 16px;
-    color: #3498db;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #007bff;
     font-weight: 600;
-    padding: 8px 14px;
-    background-color: #f0f8ff;
-    border: 1px solid #3498db;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #e9f5ff;
+    border: 1px solid #007bff;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Hover effect for 'Read More' */
 .details .read-more:hover {
-    color: white;
-    background-color: #3498db;
-    border: 1px solid #2980b9;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #0056b3;
 }
 
 /* Back button styling */
 .details .back-button {
     display: inline-block;
-    margin-top: 30px;
-    padding: 12px 20px;
-    font-size: 16px;
-    color: white;
+    margin-top: 25px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #fff;
     text-decoration: none;
-    background-color: #3498db;
+    background-color: #007bff;
     border-radius: 6px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+    font-weight: bold;
 }
 
 /* Hover effect for Back button */
 .details .back-button:hover {
-    background-color: #2980b9;
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Responsive design for mobile screens */
@@ -88,15 +98,15 @@
     }
 
     .details .item h3 {
-        font-size: 22px;
+        font-size: 1.5rem;
     }
 
     .details .item p {
-        font-size: 15px;
+        font-size: 0.9rem;
     }
 
     .details .read-more, .details .back-button {
-        font-size: 14px;
-        padding: 10px 15px;
+        font-size: 0.9rem;
+        padding: 8px 16px;
     }
 }
