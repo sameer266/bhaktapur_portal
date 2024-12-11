@@ -78,7 +78,7 @@ def serachDetails(request):
 def details(request, id):
 
     try:
-        ward=Ward.objects.get(slug=id)
+        ward=Ward.objects.get(id=id)
         return render(request,'pages/details.html',{'data':ward})
     except Exception as e:
         content=Content.objects.get(id=id)
