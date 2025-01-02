@@ -30,7 +30,7 @@ urlpatterns = [
     path('history/',views.historyDetails,name="history_page"),
     path('events-notice/',views.events_noticeDetails,name="event_page"),
     path('explore-places/',views.explorePlaces,name="explore_page"),
-    path('search-details/',views.serachDetails,name="search-page"),
+    path('search-details/',views.searchDetails,name="search-page"),
     path('details/<id>',views.details,name="details_page"),
 
 

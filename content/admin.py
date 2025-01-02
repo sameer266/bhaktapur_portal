@@ -7,12 +7,18 @@ from ward.models import Ward
 from .models import Content,Category
 from user.models import MyUser
 
-# Register your models here.
+
 @admin.register(Ward)
 class WardAdmin(admin.ModelAdmin):
-    list_display=('name','category','title','body','image','slug','date_created')
+    list_display = ('get_user_ward', 'category', 'title', 'body', 'image', 'slug', 'date_created')
 
-    
+    def get_user_ward(self, obj):
+        # Access the 'ward' field of the related MyUser model
+        return obj.name.ward  # 'user' is the ForeignKey field in the Ward model
+
+    # Customize the column name in the admin panel
+    get_user_ward.short_description = 'User Ward'
+
 @admin.register(Content)
 class ContentAdmin(admin.ModelAdmin):
     list_display=('title','truncated_body','category','date_created')
