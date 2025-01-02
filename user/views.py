@@ -14,9 +14,9 @@ def login_ward(request):
 
         try:
             # Fetch the user by username and password
-            user = MyUser.objects.get(username=username)
+            user = MyUser.objects.get(username=username,password=password)
             
-            if user.check_password(password):  # Using password hashing for security
+            if user:  # Using password hashing for security
                 login(request, user)  # Log the user in
 
                 # Redirect to the dashboard after login

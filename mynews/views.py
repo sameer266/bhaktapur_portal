@@ -1,8 +1,15 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from content.models import Content, Category
 from ward.models import Ward
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 
+
+# ---logout-----
+def logoutUser(request):
+    logout(request)
+    return redirect('/')
+    
 
 # -----home-------
 def Home(request):
@@ -43,9 +50,7 @@ def culture_traditionDetails(request):
 
 # ---------Events and Notice-------------
 def events_noticeDetails(request):
-    # Fetch wards linked to the logged-in user
-    ward_no = request.user.ward  # MyUser's ward name
-    ward_data = Ward.objects.filter(name=request.user)  # Ward data linked to the user
+    ward_data = Ward.objects.all().order_by('date_created')
     return render(request, 'pages/events&notice.html', {'ward_data': ward_data})
 
 
@@ -74,7 +79,7 @@ def searchDetails(request):
 def details(request, id):
     try:
         # Attempt to retrieve a Ward object if it exists
-        ward = get_object_or_404(Ward, id=id)
+        ward = Ward.objects.get( title=id)
         return render(request, 'pages/details.html', {'data': ward})
     except:
         # If no Ward object is found, retrieve a Content object instead

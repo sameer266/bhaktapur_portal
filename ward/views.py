@@ -8,8 +8,8 @@ from user.models import MyUser
 
 def getOneWardDetails(request, id):
     # Ensure `id` corresponds to the ward name in MyUser
-    user = get_object_or_404(MyUser, ward=id)  # Retrieve MyUser by `ward` field
+    user = MyUser.objects.get(ward=1) # Retrieve MyUser by `ward` field
 
     # Fetch Ward objects linked to the user
-    ward = Ward.objects.filter(name=user).order_by('-date_created')
+    ward = Ward.objects.filter(name=user.ward).order_by('-date_created')
     return render(request, 'ward/ward.html', {'ward_data': ward, 'ward_no': id})

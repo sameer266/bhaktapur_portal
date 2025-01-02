@@ -24,14 +24,15 @@
  
  {%endif%}
 
-    <!-- -----if edit data success  -->
+    <!-- -if edit data success  -->
      
   
     {% if ward_data %}
     <div class="row">
+        <p class="ward-title" style="color: black ; text-align: center;font-weight: bold; " > Welcome Ward no {{item.name}}</p>
        
         {% for item in ward_data %}
-        <p class="ward-title" style="color: black ; text-align: center;font-weight: bold; " > Welcome Ward no {{item.name}}</p>
+       
         <div class="col-md-6 my-2 news-card">
            
             <div class="card horizontal-card">
@@ -46,14 +47,14 @@
                         <div class="card-body">
                             <!-- Title with a clickable link to the details page -->
                             <h5 class="card-title">
-                                <a href="/details/{{ item.id }}">{{ item.title }}</a>
+                                <a href="/details/{{ item.title }}">{{ item.title }}</a>
                             </h5>
                         
                             <p class="card-date">{{ item.date_created|date:"M d, Y" }}</p>
                             
                             <p class="card-text">{{ item.body|truncatewords:20|safe }}</p>
                             <!-- Link to the details page for the full content -->
-                            <a href="/details/{{ item.id }}" class="btn-read-more">Read More <span>&#x2192;</span></a>
+                            <a href="/details/{{ item.title }}" class="btn-read-more">Read More <span>&#x2192;</span></a>
                             
                             <!-- Add buttons for CRUD operations (Edit/Delete) -->
                             <div class="mt-3">

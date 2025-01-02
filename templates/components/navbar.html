@@ -39,7 +39,6 @@
               <li class="nav-item">
                 <a class="nav-link active {% if request.path == '/culture-tradition/' %}active_bgcolor{% endif %}" href="/culture-tradition/">Culture & Festival</a>
               </li>
-
               <li class="nav-item">
                 <a class="nav-link active {% if request.path == '/history/' %}active_bgcolor{% endif %}" href="/history/">History</a>
               </li>
@@ -49,9 +48,8 @@
               <li class="nav-item">
                 <a class="nav-link active {% if request.path == '/explore-places/' %}active_bgcolor{% endif %}" href="/explore-places/">Explore Places</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active {% if request.path == '/user/' %}active_bgcolor{% endif %}" href="/user/">Login</a>
-              </li>
+             
+             
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Wards  &#11206;
@@ -64,7 +62,22 @@
                   <li><a class="dropdown-item" href="/ward/5/">Ward 5</a></li>
                 </ul>
               </li>
+
+              <!-- -----Login----- -->
+              <li class="nav-item">
+                <a class="nav-link active {% if request.path == '/user/' %}active_bgcolor{% endif %}" href="/user/" style="color: rgb(255, 255, 255) !important;">Login</a>
+              </li>
+
+              <!-- ----Logout------ -->
+              <li class="nav-item">
+                <a class="nav-link " href="/logout/" style="color: red !important;">Logout</a>
+              </li>
              
+            </ul>
+            
+              </li>
+
+              
             </ul>
             <form class="d-flex" method="get" action="/search-details/">
               <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
