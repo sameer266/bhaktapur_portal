@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'ward',
     'user',
     'content',
+    'mail'
 ]
 
 MIDDLEWARE = [
@@ -168,4 +169,18 @@ CKEDITOR_CONFIGS = {
         },
 }
 
+# cookies don't clash by making them unique for different user sessions:
+CSRF_COOKIE_NAME = 'csrf_token'
+
+
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+#=============== Email ========
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sameerbaiju792@gmail.com'
+EMAIL_HOST_PASSWORD = 'cjny keiv tsut pvgb'

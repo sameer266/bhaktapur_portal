@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
 
 from .models import MyUser
 from ward.models import Ward, Category
 
 def login_ward(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard_page')
     error = None  # Initialize error as None
 
     if request.method == "POST":
@@ -14,7 +17,7 @@ def login_ward(request):
 
         try:
             # Fetch the user by username and password
-            user = MyUser.objects.get(username=username,password=password)
+            user = authenticate(username=username,password=password)
             
             if user:  # Using password hashing for security
                 login(request, user)  # Log the user in
@@ -32,15 +35,12 @@ def login_ward(request):
 
 @login_required
 def dashboard(request):
-    isSuccess = False
-    if request.method == "GET":
-        isSuccess = request.GET.get('data')
 
     # Retrieve the ward associated with the logged-in user
     ward_no = request.user.ward  # Ward name from MyUser
     ward_data = Ward.objects.filter(name__ward=ward_no)  # Filter Ward by the user's ward
 
-    return render(request, 'dashboard/dashboard.html', {'ward_data': ward_data, 'isSuccess': isSuccess})
+    return render(request, 'dashboard/dashboard.html', {'ward_data': ward_data, 'ward_no':ward_no})
 
 
 @login_required

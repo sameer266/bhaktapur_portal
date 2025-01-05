@@ -1,20 +1,14 @@
-* {
-  margin: 0;
-  font-family:'Times New Roman', Times, serif;
-  box-sizing: border-box;
- 
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/* Apply Google Fonts */
+body {
+    font-family: 'Poppins', sans-serif; /* Main font */
+    color: #333;
 }
 
-
-/* -----all navbar text---- */
-.navbar-brand,
-a.nav-link.active,
-.nav-link.dropdown-toggle,
-.navbar-toggler-icon {
-  color: rgba(255, 255, 255, 0.752) !important;
-}
-
-
+/* ----- Navbar Styles ----- */
 .navbar {
   background-color: rgb(0, 0, 0) !important;
   position: relative;
@@ -24,85 +18,64 @@ a.nav-link.active,
 
 .navbar:hover {
   background-color: rgba(3, 0, 0, 0.658) !important;
-
 }
 
-
-.nav-title {
-
-  font-weight: bold;
+.navbar-brand,
+a.nav-link.active,
+.nav-link.dropdown-toggle,
+.navbar-toggler-icon {
+  color: rgba(255, 255, 255, 0.752) !important;
 }
 
+/* ----- Navbar Item Link ----- */
 .nav-item a {
   font-weight: 600;
   margin: 5px;
-  transition: all 0.2s ease-in;
   position: relative;
   overflow: hidden;
-font-size: 15;
+  font-size: 15px;
   color: black;
   z-index: 1;
-
-
-
+  transition: color 0.3s ease-in-out;
+  font-family: 'Merriweather', serif !important; 
 }
 
-.nav-item a::before {
+/* ----- Hover Effect: Line Moving Left to Right ----- */
+.nav-item a::after {
   content: "";
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.25);
-  top: 100%;
-  width: 140%;
-  height: 180%;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 50%;
-
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-
-}
-
-.nav-item a:after {
-  content: "";
-  position: absolute;
-  left: 55%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.45);
-  top: 180%;
-  width: 160%;
-  height: 190%;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
   background-color: #39bda7;
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
+  transition: width 0.3s ease-in-out;
 }
 
+.nav-item a:hover::after {
+  width: 100%;
+}
+
+/* ----- Active Item: Show Underline ----- */
+.nav-item .active_bgcolor::after {
+  width: 100%;
+  background-color: #39bda7;
+}
+
+/* ----- Navbar Button ----- */
+.navbar-toggler {
+  background-color: rgba(162, 162, 162, 0.984);
+}
+
+/* ----- Active Link Color ----- */
+.nav-item .active_bgcolor {
+  background-color: #39bda7;
+  border-radius: 4px;
+  color: white; /* Active link color */
+}
 
 .nav-item a:hover {
-
   border-radius: 4px;
-
-}
-/* .navbar-toggler  */
-.navbar-toggler {
-
-  background-color: rgba(162, 162, 162, 0.984);
- 
-}
-.nav-item a:hover:before {
-  top: -35%;
-  background-color: #39bda7;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-/* ----url set request.path== /---- */
-.nav-item .active_bgcolor{
-  background-color:  #39bda7;
-  border-radius: 4px;
-}
-
-.nav-item a:hover:after {
-  top: -45%;
 }
 
 

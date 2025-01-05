@@ -1,11 +1,20 @@
 from django.contrib import admin
+from django.utils.html import format_html
+from django.urls import reverse
+from user.models import MyUser
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.admin import UserAdmin
+from django.urls import path
+
+
 
 # Register your models here.
 
 
 from ward.models import Ward
 from .models import Content,Category
-from user.models import MyUser
+from mail import views
+
 
 
 @admin.register(Ward)
@@ -37,27 +46,53 @@ class ContentInline(admin.TabularInline):
 class CategoryAdmin(admin.ModelAdmin):
     list_display=('name',)
     inlines = [ContentInline]
+    
+
 
 @admin.register(MyUser)
-class UserAdmin(admin.ModelAdmin):
-    list_display=('username','email','role','ward','is_staff','is_active')
-    
-    
+class MyUserAdmin(UserAdmin):
+    list_display = ('username', 'email', 'role', 'ward', 'is_staff', 'is_active', 'send_email_link')
+
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
         ('Personal info', {'fields': ('first_name', 'last_name', 'email')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
-        ('Role and Ward', {'fields': ('role', 'ward')}),  # Custom fields
+        ('Role and Ward', {'fields': ('role', 'ward')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
 
-    # This controls the fields displayed when adding a new user
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email', 'password1', 'password2', 'role', 'ward', 'is_staff', 'is_active')}
+            'fields': ('username', 'email', 'password1', 'password2', 'role', 'ward', 'is_staff', 'is_active')},
         ),
     )
+
     search_fields = ('username', 'email', 'first_name', 'last_name')
     ordering = ('username',)
+
+    def send_email_link(self, obj):
+        # Link to the custom email sending page
+        if obj.role=="ward_officer":
+            url = reverse('admin:send_email_view')
+            return format_html('<a href="{}">Send Email</a>', url)
+
+    send_email_link.short_description = 'Send Email'
+
+    # Add custom URL for the email sending view
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path('send-email/', self.admin_site.admin_view(views.send_email_view), name='send_email_view'),
+        ]
+        return custom_urls + urls
     
+#-------------------
+#----When the MyUserCreationForm is used to create a new user, Django will automatically call the set_password method to hash the password before saving it to the database.
+class MyUserCreationForm(UserCreationForm):
+    class Meta:
+        model = MyUser
+        fields = ('username', 'email', 'role', 'ward', 'is_staff', 'is_active')
+        
+
+

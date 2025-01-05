@@ -24,9 +24,16 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
+    # ====== Home page ===========
     path('',views.Home,name='home_page'),
+    
+    # ======  logout =======
     path('logout/',views.logoutUser,name='logout'),
     
+    
+    # ==== Category ========
+    path('category/<id>/',views.categoryDetails,name="category_page"),
     path('jobs/',views.jobDetails,name="job_page"),
     path('culture-tradition/',views.culture_traditionDetails,name="culture_page"),
     path('history/',views.historyDetails,name="history_page"),
@@ -35,11 +42,13 @@ urlpatterns = [
     path('search-details/',views.searchDetails,name="search-page"),
     path('details/<id>',views.details,name="details_page"),
 
-
-      path('ckeditor/', include('ckeditor_uploader.urls')),
     
+    # ========= ward and ward login ==========
     path('ward/',include('ward.urls')),
     path('user/',include('user.urls')),
+    
+    # ============= email =========
+    path('email/',include('mail.urls')),
     
 ]
 

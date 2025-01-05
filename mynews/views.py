@@ -3,34 +3,42 @@ from content.models import Content, Category
 from ward.models import Ward
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 
 # ---logout-----
+@csrf_exempt
 def logoutUser(request):
     logout(request)
     return redirect('/')
     
-
-# -----home-------
+# ----home page-----
 def Home(request):
+    # Fetch categories
+    categories = Category.objects.all()
+
+    # Fetch content based on category
     category_culture = Category.objects.get(name="Culture & Tradition")
     culture = Content.objects.filter(category=category_culture).order_by('-date_created')[:6]
     
     category_jobs = Category.objects.get(name="Jobs")
     jobs = Content.objects.filter(category=category_jobs).order_by('-date_created')[:4]
     
+    # Fetch latest top news
     top_news = Content.objects.all().order_by('-date_created')[:6]
 
     # Fetch wards linked to the logged-in user
-    
-    ward_data = Ward.objects.all().order_by('date_created')[:4]  # Fixed this line
+    ward_data = Ward.objects.all().order_by('date_created')[:4]  # Adjust this query based on your requirements
 
+    # Prepare data to send to the template
     data = {
         'culture_data': culture,
         'jobs_data': jobs,
         'ward_data': ward_data,
-        'top_news': top_news
+        'top_news': top_news,
+        'categories': categories,  # Add categories to context
     }
+
     return render(request, 'pages/home.html', data)
 
 
@@ -67,6 +75,12 @@ def explorePlaces(request):
     places = Content.objects.filter(category=category)
     return render(request, 'pages/places.html', {'places_data': places})
 
+
+# -------More category details--------
+def categoryDetails(request, id):
+    category = Category.objects.get(id=id)
+    data = Content.objects.filter(category=category)
+    return render(request, 'pages/categorydetails.html', {'data': data, 'category': category})
 
 # -------search details---------
 def searchDetails(request):
