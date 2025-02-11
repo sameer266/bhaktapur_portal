@@ -48,16 +48,23 @@
               </li>
 
               <!-- Ward List -->
+              
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Wards  &#11206;
+                  Wards
                 </a>
+
+               
                 <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                  
                   {% for ward in ward_data %}
                     <li><a class="dropdown-item" href="/ward/{{ ward.id }}/">{{ ward.name }}</a></li>
                   {% endfor %}
+                
                 </ul>
               </li>
+              
+
 
               <!-- Dynamic Categories: Display first 5 categories and the rest in a dropdown -->
               {% if categories %}

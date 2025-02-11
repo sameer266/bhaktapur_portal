@@ -45,11 +45,11 @@ def dashboard(request):
 
 @login_required
 def edit_ward(request, id):
-    ward_data = get_object_or_404(Ward, id=id)
+    ward_data = Ward.objects.get(id=id)
 
     if request.method == "POST":
-        title = request.POST.get('title')
-        body = request.POST.get('body')
+        title = request.POST.get('title',ward_data.title)
+        body = request.POST.get('body',ward_data.body)
         image = request.FILES.get('image')
 
         # Update ward data
@@ -66,7 +66,7 @@ def edit_ward(request, id):
         # Redirect to the dashboard after editing is successful
         return redirect('/user/dashboard?data=Update Success')
 
-    return render(request, 'dashboard/edit.html', {'ward_data': ward_data})
+    return render(request, 'dashboard/edit.html', {'ward': ward_data})
 
 
 @login_required
