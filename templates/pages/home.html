@@ -179,6 +179,7 @@
                              <div class="card-body">
                                  <h5 class="card-title"> <a href="/details/{{item.slug}}">{{ item.title }}</h5></a>
                                  <p class="card-date">{{ item.date_created }}</p>
+                                 <p class="ward-name">Ward {{item.id}}  </p>
                                  <p class="card-text">{{ item.body|truncatewords:20|safe }}</p>
                                  <a href="/details/{{item.slug}}" class="btn-read-more">Read More <span>&#x2192;</span></a>
                              </div>

@@ -5,103 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- ----Tiny mce  -->
     <script src="/static/js/tinymce.js"></script>
-    <!-- Css -->
     <link rel="stylesheet" href="/static/nav&footer.css" />
     <link rel="stylesheet" href="/static/pages_style/home.css" />
     <link rel="stylesheet" href="/static/pages_style/all_category.css"/>
     <link rel="stylesheet" href="/static/pages_style/details.css"/>
     <link rel="stylesheet" href="/static/pages_style/wardlogin.css"/>
     <link rel="stylesheet" href="/static/pages_style/edit.css"/>
-
     <title>My Bhaktapur</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-          <a href="/"><img src="/static/images/logo.png" style="width: 50px;" alt="logo"/></a>
-          
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active {% if request.path == '/jobs/' %}active_bgcolor{% endif %}" href="/jobs/">Jobs</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active {% if request.path == '/culture-tradition/' %}active_bgcolor{% endif %}" href="/culture-tradition/">Culture & Festival</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active {% if request.path == '/history/' %}active_bgcolor{% endif %}" href="/history/">History</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active {% if request.path == '/events-notice/' %}active_bgcolor{% endif %}" href="/events-notice">Events & Notice</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active {% if request.path == '/explore-places/' %}active_bgcolor{% endif %}" href="/explore-places/">Explore Places</a>
-              </li>
-
-              <!-- Ward List -->
-              
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Wards
-                </a>
-
-               
-                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                  
-                  {% for ward in ward_data %}
-                    <li><a class="dropdown-item" href="/ward/{{ ward.id }}/">{{ ward.name }}</a></li>
-                  {% endfor %}
-                
+            <a href="/"><img src="/static/images/logo.png" style="width: 50px;" alt="logo"/></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/jobs/">Jobs</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/culture-tradition/">Culture & Festival</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/history/">History</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/events-notice">Events & Notice</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/explore-places/">Explore Places</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Wards</a>
+                        <ul class="dropdown-menu">
+                            {% for ward in wards %}
+                                <li><a class="dropdown-item" href="/ward/{{ ward.name}}/">{{ ward.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% if categories %}
+                        {% if categories|length > 5 %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">More Categories</a>
+                                <ul class="dropdown-menu">
+                                    {% for category in categories|slice:"5:" %}
+                                        <li><a class="dropdown-item" href="/category/{{ category.id }}/">{{ category.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link active" href="/user/">Login</a></li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="/logout/" style="color: red;">Logout</a></li>
+                    {% endif %}
                 </ul>
-              </li>
-              
-
-
-              <!-- Dynamic Categories: Display first 5 categories and the rest in a dropdown -->
-              {% if categories %}
-               
-                {% if categories|length > 5 %}
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      More Categories
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                      {% for category in categories|slice:"5:" %}
-                        <li><a class="dropdown-item" href="/category/{{ category.id }}/">{{ category.name }}</a></li>
-                      {% endfor %}
-                    </ul>
-                  </li>
-                {% endif %}
-              {% endif %}
-
-              <!-- -----Login----- -->
-              <li class="nav-item">
-                <a class="nav-link active {% if request.path == '/user/' %}active_bgcolor{% endif %}" href="/user/" style="color: rgb(255, 255, 255) !important;">Login</a>
-              </li>
-
-              <!-- ----Logout------ -->
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link " href="/logout/" style="color: red !important;">Logout</a>
-              </li>
-              {% endif %}
-            </ul>
-            <form class="d-flex" method="get" action="/search-details/">
-              <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
+                <form class="d-flex" method="get" action="/search-details/">
+                    <input class="form-control me-2" name="query" type="search" placeholder="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
         </div>
+        
     </nav>
-
 </body>
 </html>

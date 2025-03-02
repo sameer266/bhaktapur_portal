@@ -71,6 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'mynews.context_processors.categories',  # Add this line
+                'mynews.context_processors.wards',  # Add this line
             ],
         },
     },
