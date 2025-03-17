@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
+from django.contrib import messages
 
 from .models import MyUser
 from ward.models import Ward, Category
@@ -23,6 +24,7 @@ def login_ward(request):
                 login(request, user)  # Log the user in
 
                 # Redirect to the dashboard after login
+                messages.success(request,"Login Success")
                 return redirect('dashboard_page')  # Return the redirect response
             else:
                 error = "Invalid username or password."
@@ -79,7 +81,7 @@ def delete_ward(request, id):
 @login_required
 def add_ward(request):
     # Get the ward name of the logged-in user
-    ward_no = request.user.ward  # Ward name from MyUser
+    ward_no = request.user.ward  
     category = Category.objects.get(name="Events & Notice")
 
     if request.method == "POST":
@@ -89,7 +91,7 @@ def add_ward(request):
 
         # Create a new ward entry and link it to the user's ward
         ward = Ward.objects.create(
-            name=request.user,  # Link to the MyUser object
+            name=request.user, 
             title=title,
             category=category,
             body=body,

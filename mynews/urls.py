@@ -40,7 +40,7 @@ urlpatterns = [
     path('events-notice/',views.events_noticeDetails,name="event_page"),
     path('explore-places/',views.explorePlaces,name="explore_page"),
     path('search-details/',views.searchDetails,name="search-page"),
-    path('details/<id>',views.details,name="details_page"),
+    path('details/<int:id>',views.details,name="details_page"),
 
     
     # ========= ward and ward login ==========

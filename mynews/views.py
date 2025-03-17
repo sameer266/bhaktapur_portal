@@ -14,29 +14,27 @@ def logoutUser(request):
     
 # ----home page-----
 def Home(request):
-    # Fetch categories
+    
     categories = Category.objects.all()
 
-    # Fetch content based on category
+
     category_culture = Category.objects.get(name="Culture & Tradition")
     culture = Content.objects.filter(category=category_culture).order_by('-date_created')[:6]
     
     category_jobs = Category.objects.get(name="Jobs")
     jobs = Content.objects.filter(category=category_jobs).order_by('-date_created')[:4]
     
-    # Fetch latest top news
+  
     top_news = Content.objects.all().order_by('-date_created')[:6]
 
-    # Fetch wards linked to the logged-in user
     ward_data = Ward.objects.all().order_by('date_created')[:4]  # Adjust this query based on your requirements
 
-    # Prepare data to send to the template
     data = {
         'culture_data': culture,
         'jobs_data': jobs,
         'ward_data': ward_data,
         'top_news': top_news,
-        'categories': categories,  # Add categories to context
+        'categories': categories,  
     }
 
     return render(request, 'pages/home.html', data)
@@ -92,8 +90,9 @@ def searchDetails(request):
 # ----details views when click on read more------
 def details(request, id):
     try:
+        print(id)
         # Attempt to retrieve a Ward object if it exists
-        ward = Ward.objects.get( title=id)
+        ward = Ward.objects.get( id=id)
         return render(request, 'pages/details.html', {'data': ward})
     except:
         # If no Ward object is found, retrieve a Content object instead

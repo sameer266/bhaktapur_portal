@@ -13,7 +13,9 @@
             <div class="card horizontal-card">
                 <div class="row no-gutters"> <!-- Use no-gutters to eliminate margin between columns -->
                     <div class="col-md-4">
+                        {% if item.image %}
                         <img src="{{item.image.url}}" class="card-img-left" alt="Job Image">
+                        {% endif %}
                     </div>
                     <div class="col-md-8 ">
                         <div class="card-body">

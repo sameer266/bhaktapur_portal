@@ -1,4 +1,30 @@
 /* --------Main Title (h2)-------- */
+
+:root {
+    --primary-color: #9C3D54;
+    --secondary-color: #E85A4F;
+    --accent-color: #F5B971;
+    --dark-color: #2C363F;
+    --light-color: #F4F1DE;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+    --transition: all 0.3s ease-in-out;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.2);
+    --border-radius: 10px;
+  }
+  
+  /* Global styles */
+  body {
+    font-family: var(--font-body) !important;
+    color: var(--text-primary);
+    line-height: 1.7;
+    background-color: #fdfdfd;
+  }
+  
+
 .main-title h2 {
     margin-top: 50px;
     font-family: 'Playfair Display', serif;

@@ -10,7 +10,7 @@
  <h3 id="success-message" style="color: red;">{{isSuccess}}</h3>
 
  <script>
-     // Wait for the DOM to be fully loaded
+    
      window.onload = function() {
          // Hide the success message after 3 seconds (3000 milliseconds)
          setTimeout(function() {
@@ -40,7 +40,9 @@
                     
                    
                     <div class="col-md-4">
+                    {% if item.image %}
                         <img src="{{ item.image.url }}" class="card-img-left" alt="{{ item.title }}">
+                        {% endif %}
                     </div>
                   
                     <div class="col-md-8">
