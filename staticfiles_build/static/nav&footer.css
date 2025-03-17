@@ -1,0 +1,159 @@
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/* Apply Google Fonts */
+body {
+    font-family: 'Poppins', sans-serif; /* Main font */
+    color: #333;
+}
+
+/* ----- Navbar Styles ----- */
+.navbar {
+  margin-bottom: 20px;
+  background-color: rgb(0, 0, 0) !important;
+  position: fixed;
+  transition: 0.2s ease-in;
+
+}
+
+.navbar:hover {
+  background-color: rgba(3, 0, 0, 0.658) !important;
+}
+
+.navbar-brand,
+a.nav-link.active,
+.nav-link.dropdown-toggle,
+.navbar-toggler-icon {
+  color: rgba(255, 255, 255, 0.752) !important;
+}
+
+/* ----- Navbar Item Link ----- */
+.nav-item a {
+  font-weight: 600;
+  margin: 5px;
+  position: relative;
+  overflow: hidden;
+  font-size: 15px;
+  color: black;
+  z-index: 1;
+  transition: color 0.3s ease-in-out;
+  font-family: 'Merriweather', serif !important; 
+}
+
+/* ----- Hover Effect: Line Moving Left to Right ----- */
+.nav-item a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #39bda7;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-item a:hover::after {
+  width: 100%;
+}
+
+/* ----- Active Item: Show Underline ----- */
+.nav-item .active_bgcolor::after {
+  width: 100%;
+  background-color: #39bda7;
+}
+
+/* ----- Navbar Button ----- */
+.navbar-toggler {
+  background-color: rgba(162, 162, 162, 0.984);
+}
+
+/* ----- Active Link Color ----- */
+.nav-item .active_bgcolor {
+  background-color: #39bda7;
+  border-radius: 4px;
+  color: white; /* Active link color */
+}
+
+.nav-item a:hover {
+  border-radius: 4px;
+}
+
+
+
+/* -----------------
+-----footer-------- */
+
+.footer {
+    background-color: #000000;
+    color: #cecece;
+    padding: 40px 0;
+    border-top: 1px solid #495057;
+    position: relative;
+    overflow: hidden;
+    transition: 0.2s;
+    margin-bottom: 0px;
+    margin-top: 10vh;
+  
+}
+
+.footer:hover{
+  background-color: #000000bb;
+}
+
+
+.footer h5 {
+    font-weight: bold;
+    color:rgb(166, 90, 32);
+    position: relative;
+    z-index: 1;
+}
+
+.footer p, .footer a {
+    position: relative;
+    z-index: 1;
+}
+
+.footer p {
+    margin-bottom: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.footer a {
+    color: #f8f9fa;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.footer a:hover {
+    color: #ffbb33;
+    transform: translateY(-3px);
+}
+
+.footer ul.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer ul.list-unstyled li {
+    margin-bottom: 10px;
+}
+
+.footer ul.list-unstyled li a {
+    color: #f8f9fa;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.footer ul.list-unstyled li a:hover {
+    color: #ffbb33;
+    transform: translateX(5px);
+}
+
+.footer .text-center {
+    margin-top: 20px;
+}
+
+.footer .text-center p {
+    margin-bottom: 0;
+    font-size: 14px;
+}

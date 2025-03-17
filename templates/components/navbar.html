@@ -65,9 +65,11 @@
                             </li>
                         {% endif %}
                     {% endif %}
-                    <li class="nav-item"><a class="nav-link active" href="/user/">Login</a></li>
+                   
                     {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="/logout/" style="color: red;">Logout</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link active" href="/user/">Login</a></li>
                     {% endif %}
                 </ul>
                 <form class="d-flex" method="get" action="/search-details/">

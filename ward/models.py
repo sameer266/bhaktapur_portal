@@ -6,7 +6,7 @@ from user.models import MyUser
 
 class Ward(models.Model):
    
-    name = models.OneToOneField(
+    name = models.ForeignKey(
         MyUser,
         on_delete=models.CASCADE,  
         related_name='wards'       

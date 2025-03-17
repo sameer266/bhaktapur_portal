@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')), 
     
     # ====== Home page ===========
     path('',views.Home,name='home_page'),
